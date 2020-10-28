@@ -98,11 +98,11 @@ class UntappdCheckinSensor(Entity):
             return False
         else:
             checkin_date = parser.parse(result["created_at"]).replace(tzinfo=None)
-            if (current_date - checkin_date).days > 0:
+            if (current_date - checkin_date).days > 1:
                 relative_checkin_date = (
-                    str((current_date - checkin_date).days + 1) + " days ago"
+                    str((current_date - checkin_date).days) + " days ago"
                 )
-            elif (current_date - checkin_date).days == 0:
+            elif (current_date - checkin_date).days == 1:
                 relative_checkin_date = "Yesterday"
             else:
                 relative_checkin_date = "Today"
